@@ -1,8 +1,5 @@
 /*
-* @Author: TomChen
-* @Date:   2019-04-09 19:28:12
-* @Last Modified by:   TomChen
-* @Last Modified time: 2019-04-12 19:05:31
+整个项目的入口，从index.js开始
 */
 import React from 'react'
 import ReactDOM from 'react-dom'
