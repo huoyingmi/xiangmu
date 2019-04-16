@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>4-显示和隐藏-淡入淡出功能.html</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/ktao.css">
+	<link rel="stylesheet" href="css/ktao-common.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+			margin-bottom: 20px;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: #f00;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div id="box" class="transition"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+ //将相同的代码抽取出来
+function init($elem){
+	// is(选择器) ,检测jQuery对象中是否有匹配元素
+	// $('选择器:hidden')   匹配所有不可见元素
+	if($elem.is(":hidden")){
+        //data([key],[value])获取key并赋值
+        // 当隐藏状态
+        $elem.data("status","hiden");
+    }else{
+    	// 当显示状态
+        $elem.data("status","shown");
+    }
+}
+function show($elem,cb){
+	if($elem.data('status') == 'shown') return;
+	if($elem.data('status') == 'show') return;
+	// 在调用之前先触发一个自定义事件
+	$elem.data("status","show").trigger('shower');
+	cb();
+}
+function hide($elem,cb){
+    if($elem.data('status') == 'hiden') return;
+	if($elem.data('status') == 'hider') return;
+    // 在调用之前先触发一个自定义事件
+	$elem.data("status","hider").trigger('hider');
+	cb();
+}
+
+//定义一个对象实现显示隐藏
+var slient = {
+  	// 初始化一个方法将当前的显示或者隐藏的状态提前存起来
+  	init:init,
+	// show方法
+	show:function($elem){
+		/*
+		if($elem.data('status') == 'shown') return;
+		if($elem.data('status') == 'show') return;
+		// 在调用之前先触发一个自定义事件
+		$elem.data("status","show").trigger('shower');
+		*/
+		show($elem,function(){
+			$elem.show();
+	        // 在调用之后再触发一个自定义事件
+			$elem.trigger('shown').data("status","shown");
+		})
+	},
+	// hide方法
+	hide:function($elem){
+		/*
+		if($elem.data('status') == 'hiden') return;
+		if($elem.data('status') == 'hider') return;
+        // 在调用之前先触发一个自定义事件
+		$elem.data("status","hider").trigger('hider');
+		*/
+		hide($elem,function(){
+			$elem.hide();
+	        // 在调用之后再触发一个自定义事件
+			$elem.trigger('hiden').data("status","hiden");
+		}) 
+	}
+}
+//重新定义一个对象实现淡入淡出，卷入卷出效果
+var js = {
+    fade:{
+    	init:function(){
+    		$elem.removeClass('transition');
+    		init($elem);
+    	},
+		show:function($elem){
+			/*
+			if($elem.data('status') == 'shown') return;
+			if($elem.data('status') == 'show') return;
+			$elem.data("status","show").trigger('shower');
+			/*
+	        $elem.show();
+			$elem.trigger('shown').data("status","shown");
+			*/
+			show($elem,function(){
+				console.log($elem);
+                $elem.stop()
+				.fadeIn(1000,function(){
+					$elem.trigger('shown').data("status","shown");
+				});
+			})
+		},
+		hide:function($elem){
+			/*
+			if($elem.data('status') == 'hiden') return;
+			if($elem.data('status') == 'hider') return;
+			$elem.data("status","hider").trigger('hider');
+			/*
+	        $elem.hide();
+			$elem.trigger('hiden').data("status","hiden");
+			*/
+			hide($elem,function(){
+                 $elem.stop()
+				.fadeOut(1000,function(){
+					console.log($elem);
+					$elem.trigger('hiden').data("status","hiden");
+				});
+			})
+		}
+    }
+}
+ // 将获得div并定义成一个变量
+  var $elem = $('#box');
+
+ //绑定自定义事件 
+$elem.on("shower shown hider hiden",function(ev){
+ 	// console.log(ev.type);
+ 	if(ev.type == 'shower'){
+ 		console.log('shower..');
+ 	}else if(ev.type == 'shown'){
+ 		console.log('shown..');
+ 	}else if(ev.type == 'hider'){
+ 		console.log('hider..');
+ 	}else if(ev.type == 'hiden'){
+ 		console.log('hiden..');
+ 	}
+})
+
+/*
+// 调用初始化方法
+  slient.init($elem);
+ // 添加点击事件达到显示目的
+ $('button').eq(0).on("click",function(){
+ 	// 将变量$elem传入slient的show方法中
+     slient.show($elem);
+ })
+ // 添加点击事件达到隐藏目的
+ $('button').eq(1).on("click",function(){
+ 	// 将变量$elem传入slient的hide方法中
+     slient.hide($elem);
+ })
+ */
+
+// 调用初始化方法
+  js.fade.init($elem);
+ // 添加点击事件达到显示目的
+ $('button').eq(0).on("click",function(){
+ 	// 将变量$elem传入slient的show方法中
+     js.fade.show($elem);
+ })
+ // 添加点击事件达到隐藏目的
+ $('button').eq(1).on("click",function(){
+ 	// 将变量$elem传入slient的hide方法中
+     js.fade.hide($elem);
+ })
+
+</script>
+</html>

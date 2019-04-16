@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11.移动复员测试.html</title>
+	<style>
+		.box{
+             width: 100px;
+             height: 100px;
+             background: #f00;
+		}
+	</style>
+</head>
+<body>
+	<button>移动</button>
+	<button>复原</button>
+	<div class="box"></div>
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+	 //1.闭包
+	;(function($){
+        // 2.构造函数
+        function Slient($elem){
+            this.$elem = $elem;
+            this.currentX = parseFloat(this.$elem.css('left'));
+            this.cyrrentY = parseFloat(this.$elem.css('top'));
+        };
+        // 3.原型对象
+        Slient.prototype = {
+        	constructor:Slient,
+        	// 6.在原型上添加to方法
+        	to:function(x,y){
+        		if(this.currentX == x && this.currentY == y) return;
+
+                
+
+        		this.$elem.triggle('move');
+                this.currentX = x;
+                this.currentY = y;
+                this.$elem.css({
+                	left:x,
+                	top:y
+                })
+
+        	},
+        	x:function(){
+                this.to(x);
+        	},
+        	y:function(){
+                this.to(null,y);
+        	}
+
+
+        };
+        // 4.实例对象
+        var $elem = $('div');
+        var move = new Slient($elem);
+
+        // 5.绑定事件
+        $elem.on('move moved',function(ev){
+            console.log(ev.type);
+        })
+
+		$('button').eq(0).on("click",function(){
+             move.to(0,100);
+		});
+		$('button').eq(1).on("click",function(){
+             mo(200,200);
+		});
+	})(jQuery);
+</script>
+</html>

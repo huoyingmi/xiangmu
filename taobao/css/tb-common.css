@@ -1,0 +1,47 @@
+.contains{
+	width: 1250px;	
+	margin-left: auto;
+	margin-right: auto;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix:after{
+	content: '';
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom:1;
+}
+a{
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 13px;
+	color: #333;
+}
+.transition{
+	transition: all 1s;
+}
+.dropdown{
+ 	position: relative;
+ }
+ .dropdown-left{
+ 	left: 0;
+ }
+ .dropdown-right{
+ 	right: 0;
+ }
+ .dropdown-lay{
+ 	display: none;
+ 	position: absolute;
+ 	z-index: 999;
+ }
+ [class *= '-active'] .droparry{
+ 	transform: rotate(180deg);
+ }

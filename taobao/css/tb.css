@@ -1,0 +1,149 @@
+/*顶部导航开始*/
+ .link{
+	color: #ea6750;
+ }
+ .navtop a:hover{
+ 	color: #ea6750; 
+ 	font-weight: 600;
+ }
+ .navtop{
+ 	height: 44px;
+ 	background: #f3f5f7;
+ }
+ .navtop-left>li{
+ 	float: left;
+ 	height: 44px;
+ 	line-height: 44px;
+ 	margin-right: 10px;
+ }
+ .navtop-left .scrollTop{
+ 	background: #fff;
+	width: 200px;
+	height: 300px;
+	border: 1px solid #f3f5f7;
+	overflow: auto;
+	overflow: hidden;
+ }
+ .navtop-left .dropdown-lay li{
+ 	height: 25px;
+ 	line-height: 25px;
+ 	margin-top: 5px;
+ }
+ .navtop-left .dropdown-lay a{
+ 	display: block;
+ 	width: 180px;
+ 	padding: 0 10px;
+ }
+ .navtop-right>li{
+ 	float: left;
+ }
+ .dropdown-toggle{
+ 	display: block;
+ 	height: 44px;
+ 	line-height: 44px;
+ 	padding: 0 5px;
+ 	border-left: #f3f5f7;
+ 	border-right: #f3f5f7;
+ }
+ .navtop .dropdown-lay{
+ 	top: 44px;
+ 	background: #fff;
+ 	border: 1px solid #f3f5f7;
+ 	border-top: none;
+ }
+ 
+ .menuitem{
+ 	display: block;
+	height: 30px;
+ 	line-height: 30px;
+ 	white-space: nowrap;
+ 	padding: 0 5px;
+ }
+ .menuitem:hover{
+ 	background: #f3f5f7;
+ }
+ .menu-active .dropdown-toggle{
+ 	background: #fff;
+ }
+ .menu-active .dropdown-lay{
+ 	display: block;
+ }
+/*顶部导航结束*/
+
+/*头部搜索框开始*/
+ .header{
+ 	position: relative;
+ 	height: 120px;
+ 	background: #fff;
+ 	/*overflow: hidden;*/
+ }
+ .head-logo{
+ 	height: 100px;
+ 	margin-top: 20px;
+ 	display: block;
+ }
+ .header-logo img{
+ 	width: 190px;
+ }
+ .head-search{
+ 	margin-left: 100px;
+ 	/*position: relative;*/
+ }
+ .search-hint{
+ 	/*position: absolute;
+ 	top: 0;
+ 	left: 0;*/
+ }
+ .search-hint li{
+ 	background: #ccc;
+    float: left;
+    width: 36px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    margin-right: 4px;
+ }
+ .search-hint li a{
+ 	color: #F40;
+    
+ }
+ .search-box{
+ 	width: 300px;
+ 	height: 30px;
+ }
+/*头部搜索框结束*/
+
+/*焦点开始*/
+ .focus{
+ 	height: 500px;
+ 	background: pink;
+ }
+/*焦点结束*/
+
+/*今日热销开始*/
+ .todays{
+ 	height: 100px;
+ 	background: tomato;
+ }
+/*今日热销结束*/
+
+/*楼层开始*/
+	/*楼层1时尚达人开始*/
+	 .floor{
+	 	height: 500px;
+	 	background: blue;
+	 }
+	/*楼层1时尚达人结束*/
+
+	/*楼层2智能先锋开始*/
+	/*楼层2智能先锋结束*/
+
+	/*楼层3生活百货开始*/
+	/*楼层3生活百货结束*/
+
+	/*楼层4居家优品开始*/
+	/*楼层4居家优品结束*/
+
+	/*楼层5特色推荐开始*/
+	/*楼层5特色推荐结束
+/*楼层结束*/

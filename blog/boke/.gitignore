@@ -1,0 +1,9 @@
+**/node_modules/
+package-lock.json
+*/img
+**/bootstrap-3.3.7-dist
+<<<<<<< HEAD
+db
+=======
+**/db
+>>>>>>> 4/15///2

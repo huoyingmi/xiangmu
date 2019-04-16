@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+**/node_modules/
+*/package-lock.json
+*/img
+=======
+**/db
+**/node_modules
+*.png
+*.jpg
+*.jpeg
+>>>>>>> 4/15///2

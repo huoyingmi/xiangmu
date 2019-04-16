@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-插件测试.html</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/ktao.css">
+	<link rel="stylesheet" href="../css/ktao-common.css">
+	<link rel="stylesheet" href="../css/font-awesome.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+			margin-bottom: 20px;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: #f00;
+			border: 10px solid #ff0;
+			padding: 20px;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div class="box transition"></div>
+	<div class="box transition"></div>
+</body>
+<script src="../js/jquery-1.12.4.js"></script>
+<script src="../js/ShowHide.js"></script>
+<script>
+
+ // 将获得div并定义成一个变量
+  var $elem = $('.box');
+  // console.log($elem);
+  // 初始化
+ $elem.showhide({
+ 	js:true,
+ 	mode:'fadeLeftRight'
+ });//第一次拿来调用
+
+ //绑定自定义事件 
+$elem.on("shower shown hider hiden",function(ev){
+ 	// console.log(ev.type);
+ 	if(ev.type == 'shower'){
+ 		console.log('shower..');
+ 	}else if(ev.type == 'shown'){
+ 		console.log('shown..');
+ 	}else if(ev.type == 'hider'){
+ 		console.log('hider..');
+ 	}else if(ev.type == 'hiden'){
+ 		console.log('hiden..');
+ 	}
+})
+
+ $('button').eq(0).on("click",function(){
+     $elem.showhide('show');//第二次拿来调用
+ })
+ $('button').eq(1).on("click",function(){
+     $elem.showhide('hide');
+ })
+
+</script>
+</html>
