@@ -12,8 +12,6 @@ import axios from 'axios';
 
 import { request } from 'util'
 
-import { ADMIN_LOGIN } from 'api'
-
 const getLoginRequestAction = ()=>{
 	return {
 		type:types.LOGIN_REQUEST
@@ -38,11 +36,35 @@ export const getLoginAction = (values)=>{
 		dispatch(getLoginRequestAction());
 
 // ————>进入login/store/reducer.js
-
+		/*
+        axios({
+        	method:'post',
+        	url:'http://127.0.0.1:3000/admin/login',
+        	data:values
+        })
+        .then((result)=>{
+        	// console.log(result);
+        	if(result.data.code == 0){
+        		// 登录成功跳转到后台首页
+        		window.location.href = "/"
+        	}else if(result.data.code == 1){
+        		// 全局提示
+        		message.error(result.data.message)
+        	}
+        })
+        .catch((err)=>{
+        	console.log(err);
+        	message.error('网络请求失败，请稍后再试')
+        })
+        .finally(()=>{
+        	// 2.让登录按钮处于活动状态
+        	dispatch(getLoginDoneAction());
+        })
+        */
         // 从util/index.js文件中得来
         request({
         	method:'post',
-        	url:ADMIN_LOGIN,
+        	url:'http://127.0.0.1:3000/admin/login',
         	data:values
         })
         .then(result=>{

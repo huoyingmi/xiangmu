@@ -24,12 +24,43 @@ class NormalLoginForm extends React.Component {
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		/*
+		this.state = {
+			isFething:false
+		}
+		*/
 	}
 	handleSubmit(e){
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
 	      if (!err) {
 	      	this.props.handleLogin(values);
+	      	/*
+	        // console.log('Received values of form: ', values);
+	        this.setState(()=>({isFething:true}))
+	        axios({
+	        	method:'post',
+	        	url:'http://127.0.0.1:3000/admin/login',
+	        	data:values
+	        })
+	        .then((result)=>{
+	        	// console.log(result);
+	        	if(result.data.code == 0){
+	        		// 登录成功跳转到后台首页
+	        		window.location.href = "/"
+	        	}else if(result.data.code == 1){
+	        		// 全局提示
+	        		message.error(result.data.message)
+	        	}
+	        })
+	        .catch((err)=>{
+	        	console.log(err);
+	        	message.error('网络请求失败，请稍后再试')
+	        })
+	        .finally(()=>{
+	        	this.setState(()=>({isFething:false}))
+	        })
+	        */
 	      }
 	    });
 	}
@@ -104,6 +135,7 @@ const mapDispatchToProps = (dispatch)=>{
 			// 5.使用redux-thunk派发一个函数action的时候，会把dispatch方法自身传递到该函数action中
 			const action = actionCreator.getLoginAction(values);
 			dispatch(action);
+			// console.log('login...',values);
 		}
 	}
 }

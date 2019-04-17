@@ -33,7 +33,13 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist')
 	},
 	// 配置别名
-	
+	resolve:{
+		alias:{
+			pages:path.resolve(__dirname,'./src/pages'),
+			util:path.resolve(__dirname,'./src/util'),
+			api:path.resolve(__dirname,'./src/api'),
+		}
+	},
 	module: {
 		rules: [
 		//处理css文件
