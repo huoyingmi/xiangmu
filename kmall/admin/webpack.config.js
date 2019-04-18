@@ -1,13 +1,7 @@
-/*
-* @Author: TomChen
-* @Date:   2019-04-08 18:41:12
-* @Last Modified by:   TomChen
-* @Last Modified time: 2019-04-14 11:34:49
-*/
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// 单独打包成一个文件
+//css单独打包成一个文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const publicPath = "/";
 
@@ -32,28 +26,29 @@ module.exports = {
 		//出口的文件所在的目录
 		path: path.resolve(__dirname, 'dist')
 	},
-	// 配置别名
-	resolve:{
-		alias:{
-			pages:path.resolve(__dirname,'./src/pages'),
-			util:path.resolve(__dirname,'./src/util'),
-			api:path.resolve(__dirname,'./src/api'),
-		}
-	},
+	//配置别名
+    resolve:{
+        alias:{
+            pages:path.resolve(__dirname,'./src/pages'),
+            util:path.resolve(__dirname,'./src/util'),
+            api:path.resolve(__dirname,'./src/api'),
+            common:path.resolve(__dirname,'./src/common'),
+        }
+    },	
 	module: {
 		rules: [
 		//处理css文件
-	        {
-            	test: /\.css$/,
-            	use: [
-	                {
-		                loader: MiniCssExtractPlugin.loader,
-		                options: {
-		                }
-	                },
-	                "css-loader"
-	            ]
-	        },
+			{
+				test: /\.css$/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+						}
+					},
+					"css-loader"
+				]
+			},
 	    //处理图片 
 			{
 				test: /\.(png|jpg|gif|jpeg)$/i,
@@ -73,7 +68,7 @@ module.exports = {
 			    use: {
 			        loader: 'babel-loader',
 			        options: {
-			            presets: ['env', 'react'],
+			            presets: ['env','es2015','react','stage-3'],
 			            plugins: [["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]]
 			        }
 			    }               

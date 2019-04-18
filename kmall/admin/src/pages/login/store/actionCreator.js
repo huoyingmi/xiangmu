@@ -10,7 +10,7 @@ import { message } from 'antd';
 
 import axios from 'axios';
 
-import { request } from 'util'
+import { request,setUserName } from 'util'
 
 import { ADMIN_LOGIN } from 'api'
 
@@ -47,6 +47,9 @@ export const getLoginAction = (values)=>{
         })
         .then(result=>{
     		if(result.code == 0){
+                console.log("1",result.data.username);
+                // 登陆成功是把用户名保存到本地
+                setUserName(result.data.username)
         		// 登录成功跳转到后台首页
         		window.location.href = "/"
         	}else if(result.code == 1){
