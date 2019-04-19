@@ -5,16 +5,15 @@ export const request = (options)=>{
 		const params = {
 			    method:options.method || 'get',
 	        	url:options.url || '',
-	        	data:options.data || ''
+	        	data:options.data || '',
+	        	withCredentials:true,
 		}
 		axios(params)
 		.then(result=>{
-			// console.log("1234");
 			resolve(result.data);
 		})
 		.catch(err=>{
 			reject(err);
-			// console.log("1234");
 		})
 	})
 }

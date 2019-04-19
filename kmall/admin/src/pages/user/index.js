@@ -3,7 +3,6 @@ import React,{ Component,Fragment } from 'react'
 
 import Layout from 'common/layout'
 
-import './index.css'
 
 class User extends Component {
 	render(){

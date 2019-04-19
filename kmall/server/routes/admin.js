@@ -18,8 +18,8 @@ const router = Router();
 router.get("/init",(req,res)=>{
 	//插入数据到数据库
 	new UserModel({
-		username:'admin',
-		password:hmac('admin'),
+		username:'coffee',
+		password:hmac('coffee'),
 		isAdmin:true
 	})
 	.save((err,newUser)=>{
@@ -64,7 +64,8 @@ router.post("/login",(req,res)=>{
 router.use((req,res,next)=>{
 	if(req.userInfo.isAdmin){
 		next()
-	}else{
+	}else{ 
+	//当用户没有登陆，或者登陆的不是管理员，则返回code是10的json数据
 		res.send({
 			code:10
 		});

@@ -42,5 +42,4 @@ class AdminSider extends Component {
 		)
 	}
 }
-
 export default AdminSider;
