@@ -5,41 +5,33 @@
 * @Last Modified time: 2019-04-12 20:09:18
 */
 import * as types from './actionTypes.js'
-import axios from 'axios';
-export const getAddItemAction = ()=>{
+
+import { request } from 'util'
+
+import { GET_USERS } from 'api'
+
+const setCountAction = (payload)=>{
 	return {
-		type:types.ADD_ITEM
-	}
-}
-export const getChangeItemAction = (payload)=>{
-	return {
-		type:types.CHANGE_ITEM,
-		payload
-	}
-}
-export const getDelItemAction = (payload)=>{
-	return  {
-		type:types.DEL_ITEM,
+		type:types.SET_COUNT,
 		payload
 	}
 }
 
-export const loadInitDataAction = (payload)=>{
-	return {
-		type:types.LOAD_DATA,
-		payload
-	}
-}
-
-export const getInitDataAction = ()=>{
+export const getPageAction = (page)=>{
 	return (dispatch)=>{
-		axios
-		.get('http://127.0.0.1:3000/')
+		request({
+			url:GET_USERS,
+			data:{
+				page:page
+			}
+		})
 		.then(result=>{
-			const action = loadInitDataAction(result.data);
-			dispatch(action)
+			// console.log("result:::",result);
+		})
+		.catch(err=>{
+			console.log(err);
 		})
 	}
 }
-
+// ————>进入home/index.js文件中
 

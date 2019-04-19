@@ -2,7 +2,7 @@
 import React,{ Component,Fragment } from 'react'
 import { Table, Divider, Tag } from 'antd';
 import { connect } from 'react-redux'
-
+import { actionCreator } from './store'
 
 import Layout from 'common/layout'
 
@@ -41,6 +41,9 @@ const columns = [
 ];
 
 class User extends Component {
+	componentDidMount(){
+		this.props.handlePage()
+	}
 	render(){
 		// console.log(this.props.list);
 		const { list } = this.props;
@@ -55,7 +58,7 @@ class User extends Component {
 			    createdAt:user.get('createdAt'),
 			}
 		}).toJS() //toJS是将对象list转换成数组
-		console.log('dataSource:',dataSource);
+		// console.log('dataSource:',dataSource);
 		return (
 			<div className="User">
 				<Layout>
@@ -76,7 +79,11 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
 	// console.log("dispatch::",dispatch);
 	return { 
-		
+		handlePage:(page)=>{
+			const action = actionCreator.getPageAction(page)
+			dispatch(action)
+// ————>进入user/store/actionCreator.js文件中
+		}
 	}
 }
 
