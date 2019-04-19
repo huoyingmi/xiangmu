@@ -30,6 +30,9 @@ export const getCountAction = ()=>{
 				// ————>进入store/reducer.js文件
 			}
 		})
+		.catch(err=>{
+			console.log(err);
+		})
 	}
 }
 // ————>进入home/index.js文件中

@@ -106,10 +106,10 @@ router.get('/users',(req,res)=>{
 		res.json({
 			code:0,
 			data:{
-				current:result.current,
-				total:result.total,
-				pageSize:result.pageSize,
-				list:result.list
+				current:result.current, //当前页面数据
+				total:result.total,  //总共显示的数据
+				pageSize:result.pageSize, //每一页显示的数据的多少
+				list:result.list //当前这一页的数组列表
 			}
 		})
 	})
