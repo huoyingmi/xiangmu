@@ -4,4 +4,4 @@
 * @Last Modified by:   TomChen
 * @Last Modified time: 2019-04-12 20:11:26
 */
-export const ADD_ITEM = 'todolist@add_item'
+export const SET_PAGE = 'user@set_page'

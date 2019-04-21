@@ -10,9 +10,9 @@ import { request } from 'util'
 
 import { GET_USERS } from 'api'
 
-const setCountAction = (payload)=>{
+const setPageAction = (payload)=>{
 	return {
-		type:types.SET_COUNT,
+		type:types.SET_PAGE,
 		payload
 	}
 }
@@ -20,13 +20,16 @@ const setCountAction = (payload)=>{
 export const getPageAction = (page)=>{
 	return (dispatch)=>{
 		request({
-			url:GET_USERS,
+			url:GET_USERS,//————>进入api/index.js文件
 			data:{
 				page:page
 			}
 		})
 		.then(result=>{
-			// console.log("result:::",result);
+			console.log("result:::",result);
+			if(result.code == 0){
+				dispatch(setPageAction(result.data))
+			}
 		})
 		.catch(err=>{
 			console.log(err);

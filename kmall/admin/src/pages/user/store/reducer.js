@@ -9,19 +9,21 @@ import { fromJS } from 'immutable'
 import * as types from './actionTypes.js'
 
 const defaultState = fromJS({
-	list:[{
-	    _id: '1',
-	    username: 'admin',
-	    age: 32,
-	    isAdmin: true,
-	    email:'test@kuazhu.com',
-	    phone:'12312341234',
-	    createdAt:'2019-10-10 14:20:10'
-	}],
+	list:[],
+	current:1,
+	pageSize:0,
+	total:0
 // ————>进入store/reducer.js文件配置
 })
 
 export default (state=defaultState,action)=>{
-
+	if(action.type == types.SET_PAGE){
+		return state.merge({
+			list:fromJS(action.payload.list),
+			current:action.payload.current,
+			pageSize:action.payload.pageSize,
+			total:action.payload.total
+		})
+	}
 	return state;
 }
