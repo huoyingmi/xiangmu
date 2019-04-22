@@ -7,3 +7,5 @@ export const USER_LOGOUT = SERVER + 'user/logout'
 export const ADMIN_COUNT = SERVER + 'admin/count'
 
 export const GET_USERS = SERVER + 'admin/users'
+
+export const ADD_CATEGORY = SERVER + 'category'

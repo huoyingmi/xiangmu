@@ -7,14 +7,15 @@ export const request = (options)=>{
 	        	url:options.url || '',
 	        	withCredentials:true,
 		}
-		switch(params.method.toUpperCase()){
+		switch(params.method.toUpperCase()){ //toUpperCase转换小写转换大写
 			case 'GET':
 			case 'DELETE':
-				params.params = options.data
-				break
+				params.params = options.data 
+			//如果是‘get’‘delete’请求则用params.params获取
+				break //停止
 			default:
 			params.data = options.data
-
+			//如果是‘post’等其他的请求方式则用params.data获取
 		}
 		axios(params)
 		.then(result=>{

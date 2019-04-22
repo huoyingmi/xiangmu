@@ -8,7 +8,7 @@ import * as types from './actionTypes.js'
 
 import { request } from 'util'
 
-import { GET_USERS } from 'api'
+import { GET_USERS,ADD_CATEGORY } from 'api'
 
 // 处理isFething loading分页预加载
 const getPageRequestAction = ()=>{
@@ -22,6 +22,17 @@ const getPageDoneAction = ()=>{
 	}
 }
 // ————>进入./actionTypes.js文件中定义PAGE_REQUEST，PAGE_DONE
+const getAddRequestAction = ()=>{
+	return {
+		type:types.ADD_REQUEST
+	}
+}
+const getAddDoneAction = ()=>{
+	return {
+		type:types.ADD_DONE
+	}
+}
+// ————>进入./actionTypes.js文件中定义ADD_REQUEST，ADD_DONE
 
 const setPageAction = (payload)=>{
 	return {
@@ -58,3 +69,28 @@ export const getPageAction = (page)=>{
 }
 // ————>进入home/index.js文件中
 
+export const getAddAction = (values)=>{
+	return (dispatch)=>{
+		// 开始之前先将dispatch(getPageRequestAction())开发一下
+		dispatch(getAddRequestAction())
+		request({
+			method:'post',
+			url:ADD_CATEGORY,//————>进入api/index.js文件
+			data:values
+		})
+		.then(result=>{
+			console.log("result:::",result);
+			// if(result.code == 0){
+			// 	dispatch(setAddAction(result.data))
+			// }
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+		.finally(()=>{
+			// 结束时再将dispatch(getPageDoneAction())开发一下
+			dispatch(getAddDoneAction())
+	// ————>进入user/store/reducer.js文件将isFething处理一下
+		})
+	}
+}

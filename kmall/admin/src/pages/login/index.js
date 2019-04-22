@@ -29,7 +29,7 @@ class NormalLoginForm extends React.Component {
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
 	      if (!err) {
-	      	console.log("1::",values);
+	      	// console.log("1::",values);
 	      	this.props.handleLogin(values);
 	      }
 	    });
@@ -83,7 +83,7 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
   6.该方法返回一个对象，对象上面的属性会映射到connect方法返回的方法指定的UI组件上的this.props上
 */
 const mapStateToProps = (state)=>{
-	console.log("state::",state);
+	// console.log("state::",state);
 	return {
 		// 想给组建传入什么值，就定义什么值，如isFething
 		// state是从login>store>reeducer.js中拿到的

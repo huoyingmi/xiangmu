@@ -9,13 +9,13 @@ import { fromJS } from 'immutable'
 import * as types from './actionTypes.js'
 
 const defaultState = fromJS({
+	isAddFething:false,
 	list:[],
 // ————>进入store/reducer.js文件配置
 	current:1, //默认值为1
 	pageSize:0, //默认值为0
 	total:0, //默认值为0
-	isFething:false
-// ————>将current,pageSize,total,isFething映射回user/index.js文件mapStateToProps方法中
+// ————>将current,pageSize,total,isAddFething映射回user/index.js文件mapStateToProps方法中
 })
 
 export default (state=defaultState,action)=>{
@@ -34,6 +34,13 @@ export default (state=defaultState,action)=>{
 	}
 	if(action.type == types.PAGE_DONE){
 		return state.set('isFething',false)
+	}
+
+	if(action.type == types.ADD_REQUEST){
+		return state.set('isAddFething',true)
+	}
+	if(action.type == types.ADD_DONE){
+		return state.set('isAddFething',false)
 	}
 
 	return state;
