@@ -9,3 +9,5 @@ export const ADMIN_COUNT = SERVER + 'admin/count'
 export const GET_USERS = SERVER + 'admin/users'
 
 export const ADD_CATEGORY = SERVER + 'category'
+
+export const GET_CATEGORIES = SERVER + 'category'

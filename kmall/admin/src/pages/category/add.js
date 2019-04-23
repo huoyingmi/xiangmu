@@ -15,6 +15,9 @@ class CategoryAdd extends Component {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+	ComponentDidMount(){
+		this.props.getLevelOneCategories();
+	}
 	handleSubmit(e){
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
@@ -26,7 +29,7 @@ class CategoryAdd extends Component {
 	}
 	render(){
 		const { getFieldDecorator } = this.props.form;
-		const { isAddFething } = this.props
+		const { isAddFething,levelOneCategories } = this.props
 		const formItemLayout = {
 	        labelCol: {
 		        xs: { span: 24 },
@@ -73,7 +76,14 @@ class CategoryAdd extends Component {
 					            rules: [{ required: true, message: '请选择父级分类' }],
 				            })(
 					            <Select style={{ width: 300 }}>
-							        <Option value="0">根分类</Option>
+						            <Option value='0'>根分类</Option>
+							        {
+							        	levelOneCategories.map(category=>{
+							        		<Option value='0'>yijifenlei</Option>
+							        		// return <Option key={category.get('_id')} value={category.get('_id')}>根分类/{category.get('name')}</Option>
+							        		// return <Option value={category._id}>根分类/{category.name}</Option>
+							        	})
+							        }
 							    </Select>
 				            )}
 				        </Form.Item>
@@ -97,6 +107,7 @@ const mapStateToProps = (state)=>{
 	// console.log("state::",state);
 	return {
 		isAddFething:state.get('category').get('isAddFething'),
+		levelOneCategories:state.get('category').get('levelOneCategories'),
 // ————>进入user/store/reducer.js文件
 	}
 }
@@ -106,6 +117,11 @@ const mapDispatchToProps = (dispatch)=>{
 		handleAdd:(values)=>{
 			// console.log("values",values);
 			const action = actionCreator.getAddAction(values);
+			// dispatch派发
+			dispatch(action);
+		},
+		getLevelOneCategories:()=>{
+			const action = actionCreator.getLevelOneCategoriesAction();
 			dispatch(action);
 		}
 // ————>进入user/store/actionCreator.js文件中

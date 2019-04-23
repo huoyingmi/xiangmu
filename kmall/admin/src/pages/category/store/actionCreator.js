@@ -8,7 +8,7 @@ import * as types from './actionTypes.js'
 
 import { request } from 'util'
 
-import { GET_USERS,ADD_CATEGORY } from 'api'
+import { GET_USERS,ADD_CATEGORY,GET_CATEGORIES } from 'api'
 
 // 处理isFething loading分页预加载
 const getPageRequestAction = ()=>{
@@ -36,7 +36,14 @@ const getAddDoneAction = ()=>{
 
 const setPageAction = (payload)=>{
 	return {
-		type:types.SET_PAGE,
+		type:types.SET_PAGE, //进入actionTypes.js文件定义
+		payload
+	}
+}
+
+const setLevelOneCategoriesAction = (payload)=>{
+	return {
+		type:types.SET_LEVEL_ONE_CATEGORIES,//进入actionTypes.js文件定义
 		payload
 	}
 }
@@ -79,10 +86,10 @@ export const getAddAction = (values)=>{
 			data:values
 		})
 		.then(result=>{
-			console.log("result:::",result);
-			// if(result.code == 0){
-			// 	dispatch(setAddAction(result.data))
-			// }
+			// console.log("result:::",result);
+			if(result.code == 0){
+				dispatch(setAddAction(result.data))
+			}
 		})
 		.catch(err=>{
 			console.log(err);
@@ -93,4 +100,21 @@ export const getAddAction = (values)=>{
 	// ————>进入user/store/reducer.js文件将isFething处理一下
 		})
 	}
+}
+
+export const getLevelOneCategoriesAction = ()=>{
+	return (dispatch)=>{
+		request({
+			//method:'get',
+			url:GET_CATEGORIES,//————>进入api/index.js文件
+			data:{
+				pid:0
+			}
+		})
+		.then(result=>{
+			console.log("result1:::",result);
+			dispatch(setLevelOneCategoriesAction())
+		})
+	}
+	
 }

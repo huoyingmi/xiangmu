@@ -12,3 +12,7 @@ export const PAGE_DONE = 'user@page_done'
 
 export const ADD_REQUEST = 'category@add_request'
 export const ADD_DONE = 'category@add_done'
+
+
+export const SET_LEVEL_ONE_CATEGORIES = 'category@set_level_one_categories'
+// 进入category/store/reducer.js文件中处理
