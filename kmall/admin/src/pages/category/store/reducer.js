@@ -10,6 +10,7 @@ import * as types from './actionTypes.js'
 
 const defaultState = fromJS({
 	isAddFething:false,
+	isPageFetching:false,
 	levelOneCategories:[], //初始的一级分类的列表映射到add.js的中去
 	list:[],
 // ————>进入store/reducer.js文件配置
@@ -44,8 +45,7 @@ export default (state=defaultState,action)=>{
 		return state.set('isAddFething',false)
 	}
 
-	if(action.type == types.SET_LEVEL_ONE_CATEGORIES){
-		console.logg('aa');
+	if(action.type == types.SET_LEVEL_ONE_CATEGORIES){;
 		// fromJS将数据转换成数组
 		return state.set('levelOneCategories',fromJS(action.payload))
 

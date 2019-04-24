@@ -10,7 +10,10 @@ class Category extends Component{
         return(
             <Switch>
                 <Route path="/category/add" component={CategoryAdd} />
-                <Route path="/category" component={CategoryList} />
+                <Route path="/category/:pid?" component={CategoryList} />
+            					{
+            						// 此处表明接收到pid的参数
+            					}
             </Switch>
         )
     }

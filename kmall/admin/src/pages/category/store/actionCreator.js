@@ -4,10 +4,10 @@
 * @Last Modified by:   TomChen
 * @Last Modified time: 2019-04-12 20:09:18
 */
+import { message } from 'antd';
+
 import * as types from './actionTypes.js'
-
 import { request } from 'util'
-
 import { GET_USERS,ADD_CATEGORY,GET_CATEGORIES } from 'api'
 
 // 处理isFething loading分页预加载
@@ -86,13 +86,19 @@ export const getAddAction = (values)=>{
 			data:values
 		})
 		.then(result=>{
-			// console.log("result:::",result);
-			if(result.code == 0){
-				dispatch(setAddAction(result.data))
+			console.log("result:::",result);
+			if(result.code == 0){ //表明成功
+				if(result.data){ //如果有data时，将页面一级分类重新加载一遍
+					dispatch(setLevelOneCategoriesAction(result.data))
+				}
+				message.success('添加分类成功')
+			}else if(result.code == 1){
+				message.error(result.message)
 			}
 		})
 		.catch(err=>{
-			console.log(err);
+			// console.log(err);
+			message.error('添加分类失败')
 		})
 		.finally(()=>{
 			// 结束时再将dispatch(getPageDoneAction())开发一下
@@ -112,7 +118,7 @@ export const getLevelOneCategoriesAction = ()=>{
 			}
 		})
 		.then(result=>{
-			console.log("result1:::",result);
+			// console.log("result1:::",result);
 			dispatch(setLevelOneCategoriesAction())
 		})
 	}

@@ -80,7 +80,7 @@ class CategoryAdd extends Component {
 							        {
 							        	levelOneCategories.map(category=>{
 							        		<Option value='0'>yijifenlei</Option>
-							        		// return <Option key={category.get('_id')} value={category.get('_id')}>根分类/{category.get('name')}</Option>
+							        		 return <Option key={category.get('_id')} value={category.get('_id')}>根分类/{category.get('name')}</Option>
 							        		// return <Option value={category._id}>根分类/{category.name}</Option>
 							        	})
 							        }
