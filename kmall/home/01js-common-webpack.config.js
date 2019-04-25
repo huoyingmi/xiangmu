@@ -95,10 +95,28 @@ module.exports = {
 		]
 	},
 	plugins:[
+	/*
+	    new htmlWebpackPlugin({
+	        template:'./src/view/index.html',//模板文件
+	        filename:'index.html',//输出的文件名
+	        inject:true,//脚本写在那个标签里,默认是true(在body结束后)
+	        hash:true,//给生成的js/css文件添加一个唯一的hash
+	        chunks:['common','index'],//打包后的文件只引入index.js文件
+	    }),
+    */
 	    new htmlWebpackPlugin(getHtmlConfig('index')),
+    /*
+	    new htmlWebpackPlugin({
+	        template:'./src/view/user-login.html',//模板文件
+	        filename:'user-login.html',//输出的文件名
+	        inject:true,//脚本写在那个标签里,默认是true(在body结束后)
+	        hash:true,//给生成的js/css文件添加一个唯一的hash
+	        chunks:['common','user-login'],//打包后的文件只引入user-login.js文件
+	    }),
+    */
 	    new htmlWebpackPlugin(getHtmlConfig('user-login')),	    
 	    new CleanWebpackPlugin(),
-	    new MiniCssExtractPlugin({ //引入css文件时使用
+	    new MiniCssExtractPlugin({
 	    	filename:'css/[name].css'
 	    })
 	],
