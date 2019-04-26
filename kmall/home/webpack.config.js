@@ -105,8 +105,8 @@ module.exports = {
 	devServer:{
 		contentBase: './dist',//内容的目录
 		port:3002,//服务运行的端口
-		proxy: [{
-		  context: ['/user'],
+		proxy: [{//解决跨域的问题
+		  context: ['/user'],//发送的请求如果以/user开头则代理到127.0.0.1服务器
 		  target: 'http://127.0.0.1:3000',
 		}]		
 	}			
