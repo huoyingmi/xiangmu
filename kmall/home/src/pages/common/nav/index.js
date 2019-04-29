@@ -1,12 +1,14 @@
+// 对应view/common/nav.html文件
 require('./index.css');
 var _user = require('service/user')
-// var _util = require('util')
+var _util = require('util')
 
 var nav = {
-	// 初始化
+	// 初始化方法
 	init:function(){
-		this.bindEvent();
-		return this;
+		this.bindEvent();//this上面的bindEvent事件
+		//this.loadUsername();//在欢迎谁谁谁上做一些事情
+		return this;//得到this指nav对象
 	},
 	bindEvent:function(){
 		// 1.绑定退出事件
@@ -14,12 +16,12 @@ var nav = {
 			// console.log('logout...');
 			_user.logout(function(result){
 				// console.log(result);
-				window.location.reload();
-			}),function(err){
-				// console.log(err);
-				alert(err.statusText);
-				// _util.showErrorMsg(msg);
-			}
+				// console.log('success');
+				window.location.reload();//刷新页面
+			},function(msg){//msg是message错误的缩写
+				// alert(msg);
+				_util.showErrorMsg(msg);
+			})
 		})
 	}
 }
