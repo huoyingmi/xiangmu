@@ -41,7 +41,11 @@ var _util = { //发送Ajax请求的方法request
 	},
 	// 跳转页面的方法
 	goLogin:function(){
-		window.location.herf = './user-login.html';
+		window.location.href = './user-login.html';
+	},
+	//跳转到首页的方法
+	goHome:function(){
+		window.location.href = '/';
 	},
 	// 数据的验证方法
 	//两个参数value指输入的值，type指类型
@@ -49,15 +53,24 @@ var _util = { //发送Ajax请求的方法request
 		var value = $.trim(value);
 		// 非空验证
 		if(type == 'require'){
-			return !!value;
+			return !!value
 		}
 		// 用户名格式验证
 		if(type == 'username'){
-			return /^[a-zA-Z0-9_]{3,6}$/.test(value);
+			return /^[a-zA-Z0-9_]{3,6}$/.test(value)
 		}
 		// 密码格式验证
 		if(type == 'password'){
-			return /^[a-zA-Z0-9_]{3,6}$/.test(value);
+			return /^[a-zA-Z0-9_]{3,6}$/.test(value)
+		}
+		// 手机号格式验证
+		if(type == 'phone'){
+			return /^1[3568]\d{9}$/.test(value)
+		}
+		// 邮箱格式验证
+		if(type == 'email'){
+			// tom@kuazu.com
+			return /^\w+@\w+\.\w{2,9}$/.test(value)
 		}
 	}
 }
