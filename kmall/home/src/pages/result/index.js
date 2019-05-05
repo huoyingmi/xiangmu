@@ -4,7 +4,12 @@
 require('./index.css')
 require('pages/common/footer')
 require('pages/common/logo')
+var _util = require('util');
 
 $(function(){
-	console.log('result ok...');
+	// console.log('result ok...');
+	// 获取到result结果页上面的register提示信息
+	var type = _util.getParamFromUrl('type');
+	// $('.default').show();
+	$('.register').show();
 })

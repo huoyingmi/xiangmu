@@ -78,8 +78,8 @@ var page = {
 			//三个参数
 			_user.register(formData,function(){
 				// console.log('register ok...');
-				// 注册成功之后，有一个页面的跳转，跳转到结果页
-				window.location.href = './result.html'
+				// 注册成功之后，有一个页面的跳转，跳转到结果页,显示不同的提示
+				window.location.href = './result.html?type=register'
 			},function(msg){
 				formErr.show(msg)
 			})

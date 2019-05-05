@@ -47,6 +47,14 @@ var _util = { //发送Ajax请求的方法request
 	goHome:function(){
 		window.location.href = '/';
 	},
+	// 跳转到result页面显示某一个提示信息
+	getParamFromUrl:function(key){
+	 // 页面搜索的内容?type=register
+	 // 页面搜索的内容?name=tom&&?type=register
+	 // 页面搜索的内容?name=tom&&?type=register&&id=123
+		var query = window.location.search.substr(1);
+		console.log(query);
+	},
 	// 数据的验证方法
 	//两个参数value指输入的值，type指类型
 	validate:function(value,type){
