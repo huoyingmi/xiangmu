@@ -53,7 +53,12 @@ var _util = { //发送Ajax请求的方法request
 	 // 页面搜索的内容?name=tom&&?type=register
 	 // 页面搜索的内容?name=tom&&?type=register&&id=123
 		var query = window.location.search.substr(1);
-		console.log(query);
+		// 传入的key的内容是正则的条件
+		var reg = new RegExp('(^|&)'+key+'=([^&]*)(&|$)');
+		var result = query.match(reg);
+		// 有的话返回result下标是2，没有的话返回null
+		return result ? decodeURIComponent(result[2]) : null;
+		console.log(result);
 	},
 	// 数据的验证方法
 	//两个参数value指输入的值，type指类型

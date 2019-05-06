@@ -9,7 +9,8 @@ var _util = require('util');
 $(function(){
 	// console.log('result ok...');
 	// 获取到result结果页上面的register提示信息
-	var type = _util.getParamFromUrl('type');
-	// $('.default').show();
-	$('.register').show();
+	// 如果是空的，则返回default
+	var type = _util.getParamFromUrl('type') || 'default';
+	console.log("type::",type);
+	$('.'+type).show();
 })
